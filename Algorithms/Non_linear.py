@@ -1,5 +1,5 @@
 import torch
-from Baseline import CustomDataset, FairBatch
+from Algorithms.Baseline import CustomDataset, FairBatch
 from torch import nn
 class NN1(torch.nn.Module):
     def __init__(self,d_in):

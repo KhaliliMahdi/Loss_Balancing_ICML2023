@@ -10,11 +10,10 @@ import warnings
 
 warnings.simplefilter('ignore')
 
-import numpy as np
 import torch
 from law_data import *  # law dataset used in the first experiment
-from Adult_data import *  # Adult dataset used in the first experiment
-from Algorithm2WithPytorch import train, penalty_method, Algorithm2_PT
+from Loss_Balancing_ICML2023.data.Adult_data import *  # Adult dataset used in the first experiment
+from Algorithm2WithPytorch import Algorithm2_PT
 
 Table = args.experiment
 if Table == 1:

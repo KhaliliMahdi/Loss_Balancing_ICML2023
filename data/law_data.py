@@ -3,15 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 def law_data(seed=0):
-    df = pd.read_csv("law_data.csv", index_col=0)
-    #df = pd.get_dummies(df, columns=["race"], prefix="", prefix_sep="")
+    df = pd.read_csv("./data/law_data.csv", index_col=0)
     df["black"] = df["race"].map(lambda x: 1 if x == 'Black' else 0)
     df["white"] = df["race"].map(lambda x: 1 if x == 'White' else 0)
-    #df["black"] = df["race"].map(lambda x: 1 if x == 2 else 0)
-    #df["white"] = df["race"].map(lambda x: 1 if x == 1 else 0)
-    #df["hispanic"] = df["race"].map(lambda x: 1 if x == 1 else 0)
-    #df["mexican"] = df["race"].map(lambda x: 1 if x == 1 else 0)
-    #df["mexican"] = df["race"].map(lambda x: 1 if x == 1 else 0)
     df = df.drop(axis=1, columns=["race"])
     df = df[(df["black"]== 1) | (df["white"] == 1)]
     df["LSAT"] = df["LSAT"].astype(int)

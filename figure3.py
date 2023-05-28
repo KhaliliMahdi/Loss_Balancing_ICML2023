@@ -8,13 +8,11 @@ args = parser.parse_args()
 import warnings
 warnings.simplefilter('ignore')
 
-import numpy as np
 import torch
-from law_data import *#law dataset used in the first experiment
-from Adult_data import *#Adult dataset used in the first experiment
-from Algorithms import *#Algorithm 1, Algorithm 2, and Algorithm 3 implemented in Convex_solver
-from Baseline import penalty_method, fair_batch #This is the baseline
-from Non_linear import train, penalty_method2, fair_batch2  #This is the baseline
+from Loss_Balancing_ICML2023.data.law_data import *#law dataset used in the first experiment
+from Loss_Balancing_ICML2023.data.Adult_data import *#Adult dataset used in the first experiment
+from Loss_Balancing_ICML2023.Algorithms.Algorithms import *#Algorithm 1, Algorithm 2, and Algorithm 3 implemented in Convex_solver
+from Loss_Balancing_ICML2023.Algorithms.Non_linear import train, penalty_method2, fair_batch2  #This is the baseline
 
 Table = args.experiment 
 if Table==1:
@@ -275,10 +273,6 @@ y2 = [a[0] for a in loss_difference_variance_test2]
 x3 = [a[0] for a in loss_with_variance_test3]
 y3 = [a[0] for a in loss_difference_variance_test3]
 
-
-
-import matplotlib.pyplot as plt
-import matplotlib
 from pylab import *
 
 font = {'family' : 'normal',
