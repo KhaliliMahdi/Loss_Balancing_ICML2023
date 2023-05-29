@@ -27,8 +27,8 @@ elif Table==2:
 
 #Please change the gamma, if you want to see the result for diffrent fairness level
 gamma = args.gamma
-ite = 10000 # maximum number of iterations for PM and FairBatch
-lr = 0.005 # learning rate
+ite = 1000 # maximum number of iterations for PM and FairBatch
+lr = 0.001 # learning rate
 r = 0.002 # regularizer parameter
 
 #In this part, we can generate the metrics in Table 1 or Table 2 for the penalty method

@@ -21,8 +21,8 @@ LL = torch.nn.MSELoss()
 
 #Please change the gamma, if you want to see the result for diffrent fairness level
 gamma = args.gamma
-ite = 10 # number of iterations
-lr = 0.005 # learning rate
+ite = 1000 # number of iterations
+lr = 0.001 # learning rate
 r = 0.002 # regularizer parameter
 
 #training a DNN without fairness constraint
@@ -156,10 +156,12 @@ for i in range(5):
   y_test_1 = dictionary['y_test_1']
   w,b, l0,l1,l = solve_lin_constrained_opt(X_0, y_0, X_1, y_1, gamma, r ,method)
   #training loss
-
+  loss_difference.append(abs(l0 - l1))
+  loss.append(l)
   #calculating test loss and test loss difference
   l0,l1,l = calculate_loss(w,b,X_test_1, y_test_1, X_test_0, y_test_0, method)
-
+  loss_difference_test.append(abs(l0 - l1))
+  loss_test.append(l)
   
 loss_with_variance = (np.mean(loss),np.std(loss))
 loss_difference_variance = (np.mean(loss_difference),np.std(loss_difference))

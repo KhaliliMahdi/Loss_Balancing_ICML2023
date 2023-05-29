@@ -9,10 +9,10 @@ import warnings
 warnings.simplefilter('ignore')
 
 import torch
-from Loss_Balancing_ICML2023.data.law_data import *#law dataset used in the first experiment
-from Loss_Balancing_ICML2023.data.Adult_data import *#Adult dataset used in the first experiment
-from Loss_Balancing_ICML2023.Algorithms.Algorithms import *#Algorithm 1, Algorithm 2, and Algorithm 3 implemented in Convex_solver
-from Loss_Balancing_ICML2023.Algorithms.Non_linear import train, penalty_method2, fair_batch2  #This is the baseline
+from data.law_data import *#law dataset used in the first experiment
+from data.Adult_data import *#Adult dataset used in the first experiment
+from Algorithms.Algorithms import *#Algorithm 1, Algorithm 2, and Algorithm 3 implemented in Convex_solver
+from Algorithms.Non_linear import train, penalty_method2, fair_batch2  #This is the baseline
 
 Table = args.experiment 
 if Table==1:
@@ -73,7 +73,7 @@ for gamma in Gamma:
     X_1 = torch.tensor(X_1,requires_grad=False).float()
     y_0 = torch.tensor(y_0,requires_grad=False).float()
     y_1 = torch.tensor(y_1,requires_grad=False).float()
-    model, l0,l1,l = fair_batch2(method, X_0, y_0, X_1, y_1, ite, lr, r, 0.005, gamma, i,1e-6)
+    model, l0,l1,l = fair_batch2(method, X_0, y_0, X_1, y_1, ite, lr, r, 0.0005, gamma, i,1e-6)
     #training loss
     loss.append(l)
     loss_difference.append(abs(l0-l1))
