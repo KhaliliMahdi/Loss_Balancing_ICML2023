@@ -1,9 +1,4 @@
-import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--experiment',type=int,default=1, choices = [1,2])
-
-args = parser.parse_args()
 
 import warnings
 warnings.simplefilter('ignore')
@@ -14,17 +9,11 @@ from data.Adult_data import *#Adult dataset used in the first experiment
 from Algorithms.Algorithms import *#Algorithm 1, Algorithm 2, and Algorithm 3 implemented in Convex_solver
 from Algorithms.Non_linear import train, penalty_method2, fair_batch2  #This is the baseline
 
-Table = args.experiment 
-if Table==1:
-  dataset = law_data
-  method = 'linear'
-  LL = torch.nn.MSELoss()
-  Gamma = [0.025,0.05,0.1,0.15,0.2]
-elif Table==2:
-  dataset = Adult_dataset
-  method = 'logistic'
-  LL = torch.nn.BCELoss()
-  Gamma = [0.02,0.04,0.06,0.08,0.1]
+
+dataset = law_data
+method = 'linear'
+LL = torch.nn.MSELoss()
+Gamma = [0.025,0.05,0.1,0.15,0.2]
 
 ite = 1000 # number of iterations
 lr = 0.001 # learning rate
